@@ -1,20 +1,20 @@
-//developed using code from https://p5js.org/examples/simulate-particle-system.html
-let ParticleSystem = function(position) {
- this.origin = position.copy();
- this.particles = [];
-};
-
-ParticleSystem.prototype.addParticle = function(color) {
- this.particles.push(new Particle(this.origin,color));
-};
-
-ParticleSystem.prototype.run = function() {
- for (let i = this.particles.length-1; i >= 0; i--) {
-	 let p = this.particles[i];
-	 p.run();
-
-if (p.isDead()) {
-	this.particles.splice(i, 1);
+function checkForFruit() {
+  point(xFruit, yFruit);
+  if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
+    xCor.unshift(xCor[0]);
+    yCor.unshift(yCor[0]);
+    numSegments++;
+    updateFruitCoordinates();
+  }
 }
+
+function updateFruitCoordinates() {
+  /*
+    The complex math logic is because I wanted the point to lie
+    in between 100 and width-100, and be rounded off to the nearest
+    number divisible by 10, since I move the snake in multiples of 10.
+  */
+
+  xFruit = floor(random(10, (width - 100) / 10)) * 10;
+  yFruit = floor(random(10, (height - 100) / 10)) * 10;
 }
-};

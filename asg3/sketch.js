@@ -89,7 +89,7 @@ function checkGameStatus() {
     yCor[yCor.length - 1] < 0 ||
     checkSnakeCollision()
   ) {
-    noLoop();
+
   }
 }
 
@@ -102,7 +102,7 @@ function checkSnakeCollision() {
   const snakeHeadY = yCor[yCor.length - 1];
   for (let i = 0; i < xCor.length - 1; i++) {
     if (xCor[i] === snakeHeadX && yCor[i] === snakeHeadY) {
-      return true;
+      return false;
     }
   }
 }
@@ -112,26 +112,6 @@ function checkSnakeCollision() {
  and just insert the tail segment again at the start of the array (basically
  I add the last segment again at the tail, thereby extending the tail)
 */
-function checkForFruit() {
-  point(xFruit, yFruit);
-  if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
-    xCor.unshift(xCor[0]);
-    yCor.unshift(yCor[0]);
-    numSegments++;
-    updateFruitCoordinates();
-  }
-}
-
-function updateFruitCoordinates() {
-  /*
-    The complex math logic is because I wanted the point to lie
-    in between 100 and width-100, and be rounded off to the nearest
-    number divisible by 10, since I move the snake in multiples of 10.
-  */
-
-  xFruit = floor(random(10, (width - 100) / 10)) * 10;
-  yFruit = floor(random(10, (height - 100) / 10)) * 10;
-}
 
 function keyPressed() {
   switch (keyCode) {
