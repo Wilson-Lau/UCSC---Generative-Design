@@ -1,4 +1,5 @@
-
+//Chun Kai Wilson Lau
+//Created using: https://p5js.org/examples/interaction-snake-game.html
 // the snake is divided into small segments, which are drawn and edited on each 'draw' call
 let numSegments = 10;
 let direction = 'right';
@@ -135,24 +136,16 @@ function updateFruitCoordinates() {
 function keyPressed() {
   switch (keyCode) {
     case 37:
-      if (direction !== 'right') {
         direction = 'left';
-      }
       break;
     case 39:
-      if (direction !== 'left') {
         direction = 'right';
-      }
       break;
     case 38:
-      if (direction !== 'down') {
         direction = 'up';
-      }
       break;
     case 40:
-      if (direction !== 'up') {
         direction = 'down';
-      }
       break;
   }
 }
