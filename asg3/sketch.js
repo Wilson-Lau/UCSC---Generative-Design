@@ -7,6 +7,8 @@ let direction = 'right';
 const xStart = 0; //starting x coordinate for snake
 const yStart = 250; //starting y coordinate for snake
 const diff = 10;
+let dialogBoxExist =false;
+let dialogBoxState =false;
 
 let xCor = [];
 let yCor = [];
@@ -38,6 +40,7 @@ function draw() {
   updateSnakeCoordinates();
   checkGameStatus();
   checkForFruit();
+  dialogBox();
 }
 
 /*
@@ -100,6 +103,11 @@ function checkGameStatus() {
 function checkSnakeCollision() {
   const snakeHeadX = xCor[xCor.length - 1];
   const snakeHeadY = yCor[yCor.length - 1];
+  if((snakeHeadX <= 250+10&&snakeHeadX >= 250-10)&&(snakeHeadY <=250+10&&snakeHeadY >=250-10)){
+    if(keyIsDown(32)){
+      dialogBoxExist=true;
+    }
+  }
   for (let i = 0; i < xCor.length - 1; i++) {
     if (xCor[i] === snakeHeadX && yCor[i] === snakeHeadY) {
       return false;

@@ -15,6 +15,6 @@ function updateFruitCoordinates() {
     number divisible by 10, since I move the snake in multiples of 10.
   */
 
-  xFruit = floor(random(10, (width - 100) / 10)) * 10;
-  yFruit = floor(random(10, (height - 100) / 10)) * 10;
+  xFruit =250;
+  yFruit = 250;
 }
