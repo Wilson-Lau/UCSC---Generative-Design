@@ -5,7 +5,13 @@ function dialogBox(){
     textSize(32);
 
     if(dialogBoxState==false){
-    text('Generate Art? (Y/N)', 40, 40);
+      text('Generate Art? (Y)', 40, 40);
+    }
+    else if(dialogBoxState==true){
+      text('Generate Art', 40, 40);
+    }
+    if(keyIsDown(89)){
+      dialogBoxState=true;
     }
   }
 }
