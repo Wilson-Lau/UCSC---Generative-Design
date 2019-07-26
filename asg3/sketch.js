@@ -4,11 +4,17 @@
 let numSegments = 10;
 let direction = 'right';
 
+let lsystem;
+
 const xStart = 0; //starting x coordinate for snake
 const yStart = 250; //starting y coordinate for snake
 const diff = 10;
 let dialogBoxExist =false;
 let dialogBoxState =false;
+
+let axiom = "F";
+let rules = {"F": "FF-[-F+F]+[+F-F]"};
+
 
 let xCor = [];
 let yCor = [];
@@ -23,13 +29,17 @@ function setup() {
   createCanvas(500, 500);
   frameRate(15);
   stroke(255);
-  strokeWeight(10);
+  strokeWeight(5);
   updateFruitCoordinates();
 
   for (let i = 0; i < numSegments; i++) {
     xCor.push(xStart + i * diff);
     yCor.push(yStart);
   }
+
+  let axiom = "F";
+  let rules = {"F": "FF-[-F+F]+[+F-F]"};
+
 }
 
 function draw() {
