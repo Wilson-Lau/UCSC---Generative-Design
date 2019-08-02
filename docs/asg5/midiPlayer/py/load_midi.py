@@ -3,7 +3,7 @@ import json
 import argparse
 
 parser = argparse.ArgumentParser(description='load_midi.py')
-parser.add_argument('--dat', type=str, default="midis",  help="Path to directory containing MIDI files.")
+parser.add_argument('--dat', type=str, default="./",  help="Path to directory containing MIDI files.")
 parser.add_argument('--out', type=str, default="midi_files.json",  help="Path to save the json file.")
 opt = parser.parse_args()
 
@@ -17,7 +17,6 @@ for file in os.listdir(opt.dat):
     if os.path.isfile(midipath) and (midipath[-5:] == ".midi" or midipath[-4:] == ".mid"):
         filename = os.path.join(opt.dat, file)
         filename = filename.replace("../", "")
-        print(filename)
 
         midi_files["file" + str(ix)] = filename;
 
