@@ -61,3 +61,17 @@ function calL(pitch){
         }
   }
 }
+
+function gen(pitch,lengthOfSound){
+  //starting variables
+  var songSpace = ' .'
+  var randPitch = parseInt(pitch[Math.floor(Math.random() * pitch.length)],10);
+  var randSound = parseInt(lengthOfSound[Math.floor(Math.random() *   lengthOfSound.length)],10);
+  song=(randPitch+'_'+randSound);
+  var spaceLength=Math.floor(Math.random() * 8+1);
+  for(i=0;i<spaceLength;i++){
+    song+=(songSpace);
+  }
+  song+=(' ');
+  console.log(song);
+}

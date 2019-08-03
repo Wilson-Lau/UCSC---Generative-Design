@@ -16,6 +16,7 @@ for (i=0; i <128; i++){
   }
 }
 
+let song ={};
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(240);
@@ -98,7 +99,7 @@ function onMIDIsLoaded(pianoRolls) {
     for(var x = 0; x < pitch.length;x++){
       store += (pitch[x]+'_'+lengthOfSound[x]+',');
     }
-    console.log(store);
+    //console.log(store);
 
 
 
@@ -109,7 +110,7 @@ function onMIDIsLoaded(pianoRolls) {
     trainL(lengthOfSound);
     calL(lengthOfSound);
     //toConsoleL(lengthOfSound);
-
+    gen(pitch,lengthOfSound);
     midiPlayer.setPianoRoll(pianoRoll, tsCallback);
 }
 
