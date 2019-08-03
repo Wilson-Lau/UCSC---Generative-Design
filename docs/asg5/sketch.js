@@ -58,6 +58,13 @@ function onMIDIsLoaded(pianoRolls) {
                 lengthOfSound[z]+=parseInt(midiText[x+1],10);
                 //console.log(lengthOfSound[z]+ ' added 2nd digit to lengthOfSound\n');
                 x++;
+                if (!isNaN(parseInt(midiText[x+1], 10))) {
+                  lengthOfSound[z]*=10;
+                  lengthOfSound[z]+=parseInt(midiText[x+1],10);
+                  //console.log(lengthOfSound[z]+ ' added 3rd digit to lengthOfSound\n');
+                  x++;
+
+                }
               }
               x++;
             }
@@ -75,11 +82,12 @@ function onMIDIsLoaded(pianoRolls) {
     }
     console.log(store);
 
-    /*
-    let pd = train();
-    name = generateName(pd);
-    console.log(pd);
-    */
+
+    let pd1 = train(pitch);
+    let pitch1  = generateName(pd1);
+    for(let hi of pitch1){
+          console.log(pitch1[hi]+', ');
+    }
     midiPlayer.setPianoRoll(pianoRoll, tsCallback);
 }
 

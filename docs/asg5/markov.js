@@ -2,22 +2,8 @@
 let ilegalChars = {" ": 0};
 let name = "";
 
-function setup() {
-    createCanvas(500,500);
 
-    // Estimate probability distribution for the dataset of names
-    let pd = train();
-    name = generateName(pd);
-    console.log(pd);
-}
-
-function draw() {
-    background(230);
-    textSize(24);
-
-    text(name, width/2, height/2);
-}
-
+//generates the string of midi sound
 function generateName(pd) {
     let nstate = sample(pd, "#");
     let name = "";
@@ -31,25 +17,27 @@ function generateName(pd) {
     return name;
 }
 
-function train() {
+function train(data) {
     let pd = {};
 
     // Load all states
-    for(let name of names) {
-        name = "#" + name + "#";
+    /*for(let name of data) {
+        name = "#" + name + "#"
+        //console.log(name);
+        
         for(let c of name) {
 
-            c = c.toLowerCase();
+            //c = c.toLowerCase();
             if(!(c in ilegalChars) && !(c in pd)) {
                 // Create a new state for this character
                 pd[c] = {};
             }
         }
-    }
+    }*/
 
     // Estimate probability distribution
-    for(let name of names) {
-        name = "#" + name.toLowerCase() + "#";
+    for(let name of data) {
+        name = "#" + name + "#";
 
         for(let i = 0; i < name.length - 1; i++) {
             let cstate = name[i];
