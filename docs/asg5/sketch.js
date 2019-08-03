@@ -20,50 +20,61 @@ function onMIDIsLoaded(pianoRolls) {
     console.log(midiText);
     //converts string to L08 markov.js name format
     let pitch =[];
-    var lengthOfSound =[];
+    let lengthOfSound =[];
     var addedToArray= false;
     var z=0;
-    for(var x = 0; x < midiText.length; x++)
+    for(var x = 0; x < midiText.length;)
     {
       addedToArray= false;
       if (!isNaN(parseInt(midiText[x], 10))) {
         // Is a number
-        console.log(parseInt(midiText[x], 10));
+        //console.log(parseInt(midiText[x], 10));
         pitch[z]=(parseInt(midiText[x], 10));
-        console.log(pitch[z]+ ' added to pitch\n');
+        //console.log(pitch[z]+ ' added to pitch\n');
+        x++;
         // if next character is a number
-          if (!isNaN(parseInt(midiText[x+1], 10))) {
+          if (!isNaN(parseInt(midiText[x], 10))) {
             pitch[z]*=10;
-            pitch[z]+=(parseInt(midiText[x+1], 10));
-            console.log(pitch[z]+ ' added 2nd digit to pitch\n');
+            pitch[z]+=(parseInt(midiText[x], 10));
+            //console.log(pitch[z]+ ' added 2nd digit to pitch\n');
             x++;
             //if the number is 3 digits
-            if (!isNaN(parseInt(midiText[x+1], 10))) {
+            if (!isNaN(parseInt(midiText[x], 10))) {
               pitch[z]*=10;
-              pitch[z]+=(parseInt(midiText[x+1], 10));
-              console.log(pitch[z]+ ' added 3rd digit to pitch\n');
+              pitch[z]+=(parseInt(midiText[x], 10));
+              //console.log(pitch[z]+ ' added 3rd digit to pitch\n');
               x++;
             }
           }
-
-          /*triggers when second argument
           if(midiText[x]=='_'){
-              lengthOfSound[z]+=midiText[x+1]
+          //triggers when second argument
+              //console.log(parseInt(midiText[x+1], 10));
+              lengthOfSound[z]=parseInt(midiText[x+1],10);
+              //console.log(lengthOfSound[z]+ ' added to lengthOfSound\n');
               x++;
               //if the number is 2 digits
               if (!isNaN(parseInt(midiText[x+1], 10))) {
                 lengthOfSound[z]*=10;
-                lengthOfSound[z]+=midiText[x+1];
+                lengthOfSound[z]+=parseInt(midiText[x+1],10);
+                //console.log(lengthOfSound[z]+ ' added 2nd digit to lengthOfSound\n');
                 x++;
               }
-              console.log(lengthOfSound[z]+ 'added to lengthOfSound\n');
-        }*/
-
+              x++;
+            }
               //increment to next on pitch and lengthOfSound
               z++;
       }
-
+      else{
+        x++;
+      }
     }
+    let store=[];
+    console.log(midiText);
+    for(var x = 0; x < pitch.length;x++){
+      store += (pitch[x]+'_'+lengthOfSound[x]+',');
+    }
+    console.log(store);
+
     /*
     let pd = train();
     name = generateName(pd);
