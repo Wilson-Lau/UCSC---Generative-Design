@@ -74,4 +74,19 @@ function gen(pitch,lengthOfSound){
   }
   song+=(' ');
   console.log(song);
+  var hold=0;
+  console.log(pitch.length);
+  for(i=0;i<128;i++){
+    var rand= Math.floor(Math.random() * (100)) + 1;
+    for(u=0;u<128;u++){
+      //console.log(data[i][u]);
+        var y=parseInt(u,10);
+        if(pitched[randPitch][y]!=0&&rand<=pitched[randPitch][y]){
+          console.log('rand'+rand+' is less than '+pitched[randPitch][y]);
+          hold = y;
+      }
+    }
+  }
+  song+=pitch[y];
+    console.log(song);
 }
