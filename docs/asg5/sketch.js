@@ -1,17 +1,25 @@
 https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
 //https://stackoverflow.com/questions/8935632/check-if-character-is-number
+var why = 0;
+let pitched =new Array(128);
+for (i=0; i <128; i++){
+  pitched[i]=new Array(128);
+  for(each in pitched[i]){
+    pitched[i][each]= why++;
+  }
+}
+let sounded =new Array(128);
+for (i=0; i <128; i++){
+  sounded[i]=new Array(128);
+  for(each in sounded[i]){
+    sounded[i][each]=why++;
+  }
+}
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(240);
 
-    let pitched =new Array(128);
-    for (i=0; i <128; i++){
-      pitched[i]=new Array(128);
-    }
-    let sounded =new Array(128);
-    for (i=0; i <128; i++){
-      sounded[i]=new Array(128);
-    }
+
     midiPlayer = new MidiPlayer();
     midiPlayer.loadMidis("data/midi_files.json", onMIDIsLoaded);
 }
@@ -96,17 +104,12 @@ function onMIDIsLoaded(pianoRolls) {
     trainP(pitch);
     calP(pitched);
     trainL(lengthOfSound);
-    calL(sounded);
+    calL(sounded);/*
     for(i=0;i<128;i++){
       for(u=0;u<128;u++){
-          console.log(sounded[data[i]][data[u]]+', ');
+          console.log(sounded[i][u]+', ');
       }
-    }
-    console.log(pd1);
-    let pitch1  = generateName(pd1);
-    for(let hi of pitch){
-    console.log(pitch1[hi]);
-  }
+    }*/
     midiPlayer.setPianoRoll(pianoRoll, tsCallback);
 }
 
