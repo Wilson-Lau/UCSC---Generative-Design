@@ -105,9 +105,10 @@ function onMIDIsLoaded(pianoRolls) {
     trainP(pitch);
     //toConsole(pitch);
     calP(pitch);
-    toConsole(pitch);
+    //toConsoleP(pitch);
     trainL(lengthOfSound);
-    calL(sounded);
+    calL(lengthOfSound);
+    //toConsoleL(lengthOfSound);
 
     midiPlayer.setPianoRoll(pianoRoll, tsCallback);
 }
@@ -117,7 +118,7 @@ function tsCallback(currentTs, notesOn) {
     // console.log(currentTs, notesOn);
 }
 
-function toConsole(data){
+function toConsoleP(data){
   for(i=0;i<128;i++){
     for(u=0;u<128;u++){
       //console.log(data[i][u]);
@@ -125,6 +126,19 @@ function toConsole(data){
         var y=parseInt(u,10);
         if(pitched[x][y]!=0){
         console.log('pitched['+i+']['+u+'] = '+ pitched[x][y]);
+      }
+    }
+  }
+}
+
+function toConsoleL(data){
+  for(i=0;i<128;i++){
+    for(u=0;u<128;u++){
+      //console.log(data[i][u]);
+        var x=parseInt(data[i],10);
+        var y=parseInt(u,10);
+        if(sounded[x][y]!=0){
+        console.log('sounded['+i+']['+u+'] = '+ sounded[x][y]);
       }
     }
   }
