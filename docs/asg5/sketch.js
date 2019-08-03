@@ -1,11 +1,11 @@
 https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
 //https://stackoverflow.com/questions/8935632/check-if-character-is-number
 var why = 0;
-let pitched =new Array(128);
+var pitched =new Array(128);
 for (i=0; i <128; i++){
   pitched[i]=new Array(128);
-  for(each in pitched[i]){
-    pitched[i][each]= why++;
+    for(u=0;u<128;u++){
+    pitched[i][u] = 0;
   }
 }
 let sounded =new Array(128);

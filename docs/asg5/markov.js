@@ -1,7 +1,8 @@
 function trainP(data){
   for(i=0;i<128;i++){
-    pitched[data[i]][data[i+1]]+=1;
-    console.log('pichted['+data[i]+']['+data[i+1]+'] = '+pitched[data[i]][data[i+1]])
+    console.log('before pichted['+data[i]+']['+data[i+1]+'] = '+ pitched[data[i]][data[i+1]])
+      pitched[data[i]][data[i+1]]+=1;
+    console.log('after pichted['+data[i]+']['+data[i+1]+'] = '+ pitched[data[i]][data[i+1]])
   }
 }
 
