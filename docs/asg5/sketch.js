@@ -2,7 +2,7 @@
 //https://stackoverflow.com/questions/8935632/check-if-character-is-number
 var pitched =new Array(128);
 for (i=0; i <128; i++){
-  pitched[i]=new Array(128);
+    pitched[i]=new Array(128);
     for(u=0;u<128;u++){
     pitched[i][u] = 0;
   }
@@ -103,20 +103,29 @@ function onMIDIsLoaded(pianoRolls) {
 
 
     trainP(pitch);
-
-    //calP(pitch);
-
+    //toConsole(pitch);
+    calP(pitch);
+    toConsole(pitch);
     trainL(lengthOfSound);
-    calL(sounded);/*
-    for(i=0;i<128;i++){
-      for(u=0;u<128;u++){
-          console.log(sounded[i][u]+', ');
-      }
-    }*/
+    calL(sounded);
+
     midiPlayer.setPianoRoll(pianoRoll, tsCallback);
 }
 
 
 function tsCallback(currentTs, notesOn) {
     // console.log(currentTs, notesOn);
+}
+
+function toConsole(data){
+  for(i=0;i<128;i++){
+    for(u=0;u<128;u++){
+      //console.log(data[i][u]);
+        var x=parseInt(data[i],10);
+        var y=parseInt(u,10);
+        if(pitched[x][y]!=0){
+        console.log('pitched['+i+']['+u+'] = '+ pitched[x][y]);
+      }
+    }
+  }
 }
